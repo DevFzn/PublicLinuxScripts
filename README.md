@@ -131,6 +131,36 @@ SSH key: llaveSSH
 Usuario: Usuario Manual  Correo: mail@user.git  Llave: llaveSSH
 Iniciar repositorio con estos valores? (s/n/q):
 ```
+
+## crea_readmes()
+
+Invoca `touch README.md` en los directorios a un sub-nivel del actual.  
+ej. nombres de directorios:  `mi_dir/`, `mi dir con espacios/`.
+
+ej. Directorios
+```txt
+ .
+├──   SubDir1
+│   ├──   deepDir1
+│   └──   deepDir2
+└──   Sub Dir 2
+    ├──   deepDir1
+    └──   deepDir2
+```
+
+`./gitfun.sh crea_readmes`
+```txt
+ .
+├──  SubDir1
+│   ├──  deepDir1
+│   ├──  deepDir2
+│   └──  README.md
+└──  Sub Dir 2
+    ├──  deepDir1
+    ├──  deepDir2
+    └──  README.md
+```
+
 Script: [gitfun.sh](./gitfun.sh)
 
 ----
@@ -202,7 +232,7 @@ Color en la consola de python con módulo **rich**. [pyRichRepl.py](./pyRichRepl
 | - | - |
 |`Caldera()` |  Lanza xfce terminal y corre el script [caldera.py](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#python)|
 |`Termo()` | Lanza xfce terminal y corre el script [caldera.sh](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#bash)|
-|`yutu()` | Busca video pasado como argumento, instancia mpv con el resultado <br> ej. `./otros.sh yutu <video a buscar>`|
+|`yutu()` | Busca video pasado como argumento, instancia [mpv](https://mpv.io/) con el resultado <br> ej. `./otros.sh yutu <video a buscar>`|
 |`Neo()` | 'Envoltorio' para neofetch <br> `./otros.sh Neo -h` lista logos disponibles <br>`./otros.sh Neo <logo>` ejecuta neofetch con el logo especificado.|
   
 
