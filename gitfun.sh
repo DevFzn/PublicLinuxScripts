@@ -58,7 +58,9 @@ manualGit(){
         printf '\nUsuario: %b%s  %b' "${GRN}" "${nombre}" "${RST}" 
         printf 'Correo: %b%s%b  ' "${GRN}" "${email}" "${RST}"
         printf 'Llave: %b%s%b\n' "${GRN}" "${sshkey}" "${RST}"
-        read -p'ok? s/n/q: ' confirma
+        printf '%bIniciar repo con estos datos? %b(s/n/q)%b:%b' \
+               "${GRn}" "${IND}" "${GRn}" "${RST}"
+        read -p' ' confirma
         case "${confirma}" in
             s|S) iniciarepo "${nombre}" "${email}" "${sshkey}" && exit 0 ;;
             q|Q) exit 0 ;;

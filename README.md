@@ -5,7 +5,7 @@ Selección de scripts de autoria propia
 - [Exploracion de Logs](#buscalog)
 - [Funciones Git](#funciones-git)
 - [Funciones Python](#funciones-python)
-- [Consola de Python a color](#Interprete-a-color)
+- [Consola de Python a color](#interprete-a-color)
 - [Otros](#otros)
 - [Lol laucher y debug](#rito-pls)
 
@@ -139,26 +139,26 @@ ej. nombres de directorios:  `mi_dir/`, `mi dir con espacios/`.
 
 ej. Directorios
 ```txt
- .
-├──   SubDir1
-│   ├──   deepDir1
-│   └──   deepDir2
-└──   Sub Dir 2
-    ├──   deepDir1
-    └──   deepDir2
+📂️ .
+├── 📂️  SubDir1
+│   ├── 📂️  deepDir1
+│   └── 📂️  deepDir2
+└── 📂️  Sub Dir 2
+    ├── 📂️  deepDir1
+    └── 📂️  deepDir2
 ```
 
 `./gitfun.sh crea_readmes`
 ```txt
- .
-├──  SubDir1
-│   ├──  deepDir1
-│   ├──  deepDir2
-│   └──  README.md
-└──  Sub Dir 2
-    ├──  deepDir1
-    ├──  deepDir2
-    └──  README.md
+📂️ .
+├── 📂️ SubDir1
+│   ├── 📂️ deepDir1
+│   ├── 📂️ deepDir2
+│   └── 📃️ README.md
+└── 📂️ Sub Dir 2
+    ├── 📂️ deepDir1
+    ├── 📂️ deepDir2
+    └── 📃️ README.md
 ```
 
 Script: [gitfun.sh](./gitfun.sh)
