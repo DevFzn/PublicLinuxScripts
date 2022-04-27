@@ -16,10 +16,8 @@ Neo(){
     Imprime_Logos(){
         printf "LOGOS: "
         awk '/ascii_distro/{flag=1;next} /ascii_bold/{flag=0} flag {print}' \
-        <<< "$(neofetch --help)" |
-        sed 's/^ */\t/'
+        <<< "$(neofetch --help)" | sed 's/^ */\t/'
     }
-
     case "${1}" in
         "-h")
             Imprime_Logos
