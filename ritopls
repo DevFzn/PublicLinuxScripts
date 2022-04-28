@@ -1,6 +1,6 @@
 new_tab  'Lutris LoL'
 title '    Lutris LoL    '
 launch bash -c 'bpytop && exit'
-launch bash -c 'tail -f $HOME/Biblio/LutrisLibrary/league-of-legends/drive_c/Riot\ Games/League\ of\ Legends/debug.log | batcat --paging=never -l log'
+launch bash -c 'tail -f $HOME/Biblio/LutrisLibrary/league-of-legends/drive_c/Riot\ Games/League\ of\ Legends/debug.log | batcat --paging=never --style grid -l log'
 launch bash -c 'lutris lutris:rungameid/2 && exit'
 enabled_layouts tall:bias=50;full_size=1
