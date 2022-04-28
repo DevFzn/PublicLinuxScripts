@@ -9,14 +9,14 @@ Selección de scripts de autoria propia
 - [Otros](#otros)
 - [Lol laucher y debug](#rito-pls)
 
-> NOTA: Funciones ejecutadas con ***alias***  
+> **NOTA:** Funciones ejecutadas con ***alias***  
 > ej: `alias mi_alias='/ruta/a/scritps/script funcion <arg(s)>'`
 ----
 
 
 # Buscalog
 
-Script a color, para explorar logs en `/var/log/` y/o directorios agregados en `~/.config/custom_log_dirs`.  
+Script a color, para explorar logs en `/var/log/` y directorios agregados en `~/.config/custom_log_dirs`.  
 ej `custom_log_dirs`:
 ```txt
 /ruta/a/directorio
@@ -24,23 +24,25 @@ ej `custom_log_dirs`:
 /ruta/a/otro/directorio/mas
 ```
 
-> nombres de directorios sin espacios ej `/ruta/a/dir/deLogs`
+> nombres de directorios sin espacios ej `/ruta/a/dir/deLogs`  
 > nombres de directorios terminan en `\n`
 
 
-Lista los log disponibles (con permiso de lectura) en los directorios mencionados.  
+Lista los log disponibles en los directorios mencionados.  
+> extension `.log`  
+> logs con permiso de lectura  
 
 `./buscalog.sh listLog`
 ```txt
     Selección de Logs :
     -------------------
-      0) logX
-      1) logXY 
-      2) logZ 
-      3) logZX 
-      4) custom/dir/logA 
-      5) custom/dir/logB 
-      6) otro/custom/dir/logC 
+      0) log_a
+      1) log_b 
+      2) log_c 
+      3) log_cd 
+      4) custom/dir/log_a
+      5) custom/dir/log_b
+      6) otro/custom/dir/log_c
       s) Salir
 
   Ver log: 
@@ -56,7 +58,7 @@ Pie de página con información del log actual, patrón de búsqueda o búsqueda
 cantidad de resultados o entradas del log.  
 
 ```txt
-| LOG: /var/log/milog.log |  BUSQUEDA: error |  ECONTRADOS: 11  |
+| LOG: /var/log/milog.log |  BUSQUEDA: \s404\s |  ECONTRADOS: 11  |
 ```
 
 Opciones en vista del log
