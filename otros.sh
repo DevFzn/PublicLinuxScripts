@@ -55,12 +55,12 @@ covStats(){
     Vars="$(grep "Chile" ~/.cache/corona | 
     sed "s/\s*//g ; s/║//g ; s/│/;/g " |
     sed "s/(CL)//g" | awk -F';' '{print $3" "$7" "$5" "$8}')"
-    Contag=$(cut -d' ' -f1 <<< $(echo ${Vars}))
-    Recupe=$(cut -d' ' -f2 <<< $(echo ${Vars}))
-    Muerte=$(cut -d' ' -f3 <<< $(echo ${Vars}))
-    Activo=$(cut -d' ' -f4 <<< $(echo ${Vars}))
-    Murtio=$(echo "${Muerte}" | sed 's/,//g')
-    Conteg=$(echo $Contag | sed 's/,//g')
+    Contag=$(cut -d' ' -f1 <<< ${Vars})
+    Recupe=$(cut -d' ' -f2 <<< ${Vars})
+    Muerte=$(cut -d' ' -f3 <<< ${Vars})
+    Activo=$(cut -d' ' -f4 <<< ${Vars})
+    Murtio="${Muerte//,/}"
+    Conteg="${Contag//,/}"
     
     # Población Chile
     PoblT=19678310
