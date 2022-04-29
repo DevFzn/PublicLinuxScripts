@@ -10,7 +10,7 @@ Selección de scripts de autoria propia
 - [Lol laucher y debug](#rito-pls)
 
 > **NOTA:** Funciones ejecutadas con ***alias***  
-> ej: `alias mi_alias='/ruta/a/scritps/script funcion <arg(s)>'`
+> - ej: `alias mi_alias='/ruta/a/script funcion <arg(s)>'`
 ----
 
 
@@ -21,16 +21,14 @@ ej `custom_log_dirs`:
 ```txt
 /ruta/a/directorio
 /ruta/a/otro/directorio
-/ruta/a/otro/directorio/mas
+/ruta/a otro/directorio con espacios
 ```
-
-> nombres de directorios sin espacios ej `/ruta/a/dir/deLogs`  
-> nombres de directorios terminan en `\n`
+> - Los nombres de directorios terminan en `\n`
 
 
 Lista los log disponibles en los directorios mencionados.  
-> extension `.log`  
-> logs con permiso de lectura  
+> - archivos con extension `.log`  
+> - archivos con permiso de lectura  
 
 `./buscalog.sh listLog`
 ```txt
@@ -92,7 +90,7 @@ UsuarioGit2    user2@git.org   keyUser2
 UsuarioGit3    user3@git.org   keyUser3
 UsuarioGit4    user4@git.org   keyUser4
 ```
-> llaves ssh en `~/.ssh/keys/`
+> - llaves ssh en `~/.ssh/keys/`
 
 ### Listar usuarios agregados  
 `./gitfun.sh gitUser`

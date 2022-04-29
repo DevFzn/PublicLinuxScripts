@@ -1,27 +1,38 @@
 #!/usr/bin/env bash
 
-declare -a LOG_DIRS
-declare -a customLogDirs
-
 LOGBASEDIR='/var/log';
 CUSTLOGDIRS="$HOME/.config/custom_log_dirs";
-ConT=0; 
 
-while read -a LINEA; do
-    customLogDirs+=($LINEA)
-done < $CUSTLOGDIRS
+lsLogDirs(){
+    OIFS="$IFS"
+    IFS=$'\n'
+    while read -a LINEA; do
+        customLogDirs+=($LINEA)
+    done < $CUSTLOGDIRS
+    \ls -U ${LOGBASEDIR}/*.log 2>/dev/null
+    for dir in ${customLogDirs[@]}; do
+        \ls -U ${dir}/*.log 2>/dev/null
+    done
+    IFS="$OIFS"
+}
 
-while read -a LINEA; do 
-    [[ -r "${LINEA}" ]] && LOG_DIRS[$ConT]="${LINEA}" && ((++ConT))
-done <<< $(\ls -U ${LOGBASEDIR}/*.log 2>/dev/null &&
-            for dir in "${customLogDirs[@]}"; do \ls -U $dir/*.log 2>/dev/null; done; )
+cargaLogDirs(){
+    ConT=0
+    OIFS="$IFS"
+    IFS=$'\n'
+    while read -a LINEA; do 
+        [[ -r "${LINEA}" ]] && LOG_DIRS[$ConT]="${LINEA}" && ((++ConT))
+    done <<< $(lsLogDirs) 
+    IFS="$OIFS"
+}
 
 listLog(){
+    cargaLogDirs
     clear
     local cont=0
     printf '\n    \e[1;32mSelección de Logs :\n' 
     printf '    %s\e[0m\n' "-------------------"
-    for str in ${LOG_DIRS[@]}; do
+    for str in "${LOG_DIRS[@]}"; do
         printf '      \e[1;34m%s)\e[0m \e[0;32m%s \e[0m\n' "$cont" "${str}" | \
         sed 's/\/var\/log\///g ; s/\.log//g'
         ((++cont))
