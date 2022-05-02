@@ -7,6 +7,9 @@ Selección de scripts de autoria propia
 - [Funciones Python](#funciones-python)
 - [Consola de Python a color](#interprete-a-color)
 - [Otros](#otros)
+  - [Estadisticas covid Chile](#covstats)
+  - [Mpv Playlist](#mpvplaylist)
+  - [Otras funciones](#otras-funciones)
 - [Lol laucher y debug](#rito-pls)
 
 > **NOTA:** Funciones ejecutadas con ***alias***  
@@ -228,13 +231,6 @@ Color en la consola de python con módulo **rich**. [pyRichRepl.py](./pyRichRepl
 ----
 
 # Otros
-| Funcion | Explicación |
-| - | - |
-|`Caldera()` |  Lanza xfce terminal y corre el script [caldera.py](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#python)|
-|`Termo()` | Lanza xfce terminal y corre el script [caldera.sh](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#bash)|
-|`yutu()` | Busca video pasado como argumento, instancia [mpv](https://mpv.io/) con el resultado <br> ej. `./otros.sh yutu <video a buscar>`|
-|`Neo()` | 'Envoltorio' para neofetch <br> `./otros.sh Neo -h` lista logos disponibles <br>`./otros.sh Neo <logo>` ejecuta neofetch con el logo especificado.|
-  
 
 ### covStats()
 
@@ -252,6 +248,57 @@ Estadisticas covid Chile
   Muertes     : 57,351 
  ----------------------------
 ```
+
+### MpvPlaylist()
+
+Función para administrar una 'playlist' para ser usada con [mpv](https://mpv.io)  
+> archivo: `~/.cache/.playlist`
+
+**Uso**  
+ej. `alias mpvp='./otros.sh pvPlaylist'`
+| Orden | Detalle |
+| - | - |
+|`mpvp` | Modo interactivo |
+|`mpvp -h` | Mostrar ayuda |
+|`mpvp https://link.video`| Agregar el link a *playlist* |
+|`mpvp -r` | Reproducir *playlist* |
+|`m̀pvp -s` | Reproducir *playlist* y apagar PC |
+
+**Modo interactivo**  
+
+```
+  Playlist Manager
+  ----------------
+
+  1) Ver Lista
+  2) Añadir link(s)
+  3) Reproducir lista
+  4) Reproducir y Apagar PC
+  5) Borrar lista
+  6) Editar
+  s) Salir
+
+ Elige una opción : 
+```
+| Opción | Detalle |
+| - | - |
+|`1`| Muestra el contenido del *playlist*  |
+|`2`| Agrega uno, o mas links (v) volver, (s) salir  |
+|`3`| Reproduce lista                  |
+|`4`| Reproduce y apaga el equipo     |
+|`5`| Borra la lista |
+|`6`| Editar lista (neovim) |
+|`s`| Salir |
+
+### Otras Funciones
+
+| Funcion | Explicación |
+| - | - |
+|`Caldera()` |  Lanza xfce terminal y corre el script [caldera.py](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#python)|
+|`Termo()` | Lanza xfce terminal y corre el script [caldera.sh](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#bash)|
+|`yutu()` | Busca video pasado como argumento, instancia [mpv](https://mpv.io/) con el resultado <br> ej. `./otros.sh yutu <video a buscar>`|
+|`Neo()` | 'Envoltorio' para neofetch <br> `./otros.sh Neo -h` lista logos disponibles <br>`./otros.sh Neo <logo>` ejecuta neofetch con el logo especificado.|
+
 Script [otros.sh](./otros.sh)
 
 ----
