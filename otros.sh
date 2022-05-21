@@ -2,7 +2,7 @@
 
 REd="\e[0;31m";  GRn="\e[0;32m";  ORn="\e[33m";
 FND="\e[40m";    RED="\e[1;31m";  GRN="\e[1;32m";
-MGNT="\e[1;35m"; BLU="\e[1;34m";  RST="\e[0m";
+MGT="\e[1;35m";  BLU="\e[1;34m";  RST="\e[0m";
 CYA="\e[1;36m";  CYa="\e[0;36m";
 
 Caldera(){
@@ -71,28 +71,29 @@ covStats(){
     Mcont="$(python3 -c "print('{:.2f}'.format(100*$Murtio/$Conteg))")" 
     # Vista
     printf '\n %bEstadisticas COVID %bChile  🇨🇱️  %b\n' "${GRN}" "${BLU}" "${RST}"
-    printf '%b%s%b\n' "${MGNT}" " ============================" "${RST}"
-    printf '  %bMuertes totales :%b %s %b\n' "${RED}" "${CYA}" "$Mtota" "${RST}"
-    printf '  %bMuertes contagio:%b %s %b\n' "${REd}" "${CYa}"  "$Mcont" "${RST}"
-    printf '%b%s%b\n' "${MGNT}" " ----------------------------" "${RST}"
+    printf '%b%s%b\n' "${MGT}" " ============================" "${RST}"
+    printf '  %bMuertes totales :%b %s %s %b\n' "${RED}" "${CYA}" "$Mtota" "%" "${RST}"
+    printf '  %bMuertes contagio:%b %s %s %b\n' "${REd}" "${CYa}"  "$Mcont" "%" "${RST}"
+    printf '%b%s%b\n' "${MGT}" " ----------------------------" "${RST}"
     printf '  %bContagios   : %b%s%b\n' "${GRn}" "${CYa}" "${Contag}" "${RST}"
     printf '  %bActivos     : %b%s%b\n' "${GRn}" "${CYa}" "${Activo}" "${RST}"
     printf '  %bRecuperados : %b%s%b\n' "${GRn}" "${CYa}" "${Recupe}" "${RST}"
     printf '  %bMuertes     : %b%s%b\n' "${RED}" "${CYA}" "${Muerte}" "${RST}"
-    printf '%b%s%b\n' "${MGNT}" " ----------------------------" "${RST}"
+    printf '%b%s%b\n' "${MGT}" " ----------------------------" "${RST}"
 }
 
 mpvPlaylist(){
+    # alias mpvp
     ayuda(){
         while read; do
             printf '%s\n' "${REPLY}"
         done <<-EOF
     Uso:
-      ./script mpvPlaylist                  Ejecuta el script.
-      ./script mpvPlaylist <link>           Agrega el link a playlist.
-      ./script mpvPlaylist -r, --play       Reproduce playlist.
-      ./script mpvPlaylist -s, --off        Reproduce playlist y apaga el equipo.
-      ./script mpvPlaylist -h, --help       Muestra el contenido de ayuda.
+      mpvp                  Ejecuta el script.
+      mpvp <link>           Agrega el link a playlist.
+      mpvp -r, --play       Reproduce playlist.
+      mpvp -s, --off        Reproduce playlist y apaga el equipo.
+      mpvp -h, --help       Muestra el contenido de ayuda.
 EOF
     exit 0
     }
@@ -169,5 +170,34 @@ EOF
         esac
     done
 }
+
+metronomo() {
+    wavcach=$HOME/.cache
+    if [ -z "${1}" ]; then
+        BPM=80
+    elif [[  -n ${1//[0-9]/}  ]]; then
+        printf "%bDebes ingresar los BPM (10-500).%b\n" \
+            "${MGT}" "${RST}" && exit 1
+        #printf "Debes ingresar un numero entre 10 y 500.\n" && exit 1
+    elif [[ "${1}" -lt 501  ]] && [[ "${1}" -gt 9 ]]; then
+        BPM="${1}"
+    else
+        printf "%bDebes ingresar un numero entre 10 y 500.%b\n"\
+            "${ORn}" "${RST}" && exit 1
+        #printf "Debes ingresar un numero entre 10 y 500.\n" && exit 1
+    fi
+    bpm=$(echo "(60000/${BPM}/1000)" | bc -l)
+    if [ ! -f ${wavcach}/metro.wav ]; then
+        ffmpeg -f lavfi -i "sine=frequency=320:duration=0.05" -ac 2 ${wavcach}/metro.wav &>/dev/null
+    fi
+    printf '%bMetronomo a: %b%s bpm%b\n%b[Salir] %b<Ctrl>+<C>%b\n' \
+           "${CYA}" "${GRN}" "${BPM}" "${RST}" "${REd}" "${BLU}" "${RST}"
+    while :; do
+        aplay -q ${wavcach}/metro.wav & sleep ${bpm}
+    done
+}
+
+touch_exec(){ 
+    touch "${1}" && chmod u+x ${1} && nvim ${1}; }
 
 "$@"

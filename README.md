@@ -9,6 +9,7 @@ Selección de scripts de autoria propia
 - [Otros](#otros)
   - [Estadisticas covid Chile](#covstats)
   - [Mpv Playlist](#mpvplaylist)
+  - [Metronomo](#metronomo)
   - [Otras funciones](#otras-funciones)
 - [Lol laucher y debug](#rito-pls)
 
@@ -232,7 +233,7 @@ Color en la consola de python con módulo **rich**. [pyRichRepl.py](./pyRichRepl
 
 # Otros
 
-### covStats()
+## covStats()
 
 Estadisticas covid Chile
 `./otros.sh covStats`
@@ -249,20 +250,20 @@ Estadisticas covid Chile
  ----------------------------
 ```
 
-### MpvPlaylist()
+## MpvPlaylist()
 
 Función para administrar una 'playlist' para ser usada con [mpv](https://mpv.io)  
 > archivo: `~/.cache/.playlist`
 
 **Uso**  
-ej. `alias mpvp='./otros.sh pvPlaylist'`
+ej. `alias mpvp='/ruta/otros.sh mpvPlaylist'`
 | Orden | Detalle |
 | - | - |
 |`mpvp` | Modo interactivo |
 |`mpvp -h` | Mostrar ayuda |
 |`mpvp https://link.video`| Agregar el link a *playlist* |
 |`mpvp -r` | Reproducir *playlist* |
-|`m̀pvp -s` | Reproducir *playlist* y apagar PC |
+|`mpvp -s` | Reproducir *playlist* y apagar PC |
 
 **Modo interactivo**  
 
@@ -290,7 +291,24 @@ ej. `alias mpvp='./otros.sh pvPlaylist'`
 |`6`| Editar lista (neovim) |
 |`s`| Salir |
 
-### Otras Funciones
+## Metronomo
+**Uso**  
+ej. `alias metro='/ruta/otros.sh metronomo'`  
+
+Por defecto inicia a **80 bpm**
+```sh
+$ metro
+Metronomo a: 80 bpm
+[Salir] <Ctrl>+<C>
+```
+O según argumento, ej. **120 bpm**
+```sh
+$ metro 120
+Metronomo a: 120 bpm
+[Salir] <Ctrl>+<C>
+```
+
+## Otras Funciones
 
 | Funcion | Explicación |
 | - | - |
@@ -303,7 +321,7 @@ Script [otros.sh](./otros.sh)
 
 ----
 
-# Rito pls
+## Rito pls
 Lanza instancia de [kitty](https://sw.kovidgoyal.net/kitty/) terminal, con 3 splits (ventanas según creador).  
 
 Layout tall:
