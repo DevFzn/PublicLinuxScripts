@@ -227,7 +227,7 @@ Script: [pythonfun.sh](./pythonfun.sh)
 
 ### Interprete a color
 
-Color en la consola de python con módulo **rich**. [pyRichRepl.py](./pyRichRepl.py)
+Color en la consola de python con módulo **rich**, mas inspector. [pyRichRepl.py](./pyRichRepl.py)  
 
 ----
 
