@@ -9,8 +9,9 @@ Selección de scripts de autoria propia
 - [Otros](#otros)
   - [Estadisticas covid Chile](#covstats)
   - [Mpv Playlist](#mpvplaylist)
-  - [Metronomo](#metronomo)
+  - [Metronomo (lite)](#metronomo)
   - [Otras funciones](#otras-funciones)
+- [Metronomo](#metronomo)
 - [Lol laucher y debug](#rito-pls)
 
 > **NOTA:** Funciones ejecutadas con ***alias***  
@@ -291,7 +292,7 @@ ej. `alias mpvp='/ruta/otros.sh mpvPlaylist'`
 |`6`| Editar lista (neovim) |
 |`s`| Salir |
 
-## Metronomo
+## Metronomo lite
 **Uso**  
 ej. `alias metro='/ruta/otros.sh metronomo'`  
 
@@ -318,6 +319,41 @@ Metronomo a: 120 bpm
 |`Neo()` | 'Envoltorio' para neofetch <br> `./otros.sh Neo -h` lista logos disponibles <br>`./otros.sh Neo <logo>` ejecuta neofetch con el logo especificado.|
 
 Script [otros.sh](./otros.sh)
+
+----
+
+## Metronomo
+> alias `alias metro=/ruta/metronomo.sh metro`
+
+`metro -h`
+```
+    Uso: metronomo [OPCS]
+
+    metro -b 80 -c '1 0 0 0'
+    metro --frecs '640 790'
+
+      -b, --bpm <BPM>               - Golpes por minuto.
+      -c, --compas <COMPAS>         - Entre comillas, '1 0 0 1 0', separados por espacios.
+      -s, --sub                     - Activa sonido de las subdivisiones.
+      -f, --frecs <FRECs>           - Cambia la frecuencia de sonidos del metronomo (0 y 1).
+      -v, --version                 - Muestra la fecha de la versión.
+      -h, --help                    - Muestra información de ayuda.
+
+    Sonidos metronomo:
+      - '/home/user/.cache/metro0.wav'.
+      - '/home/user/.cache/metro1.wav'.
+```
+Ejemplo:
+ - 40 bpm.
+ - Pulsos a frecuencias 0=320, 1=560.
+ - Compás 6/8 con acento en 1er, 4to y 5to pulso.  
+ - Con sonido en subdivisiones (ceros).
+
+```
+    metro -b 40 -f '320 560' -c '1 0 0 1 1 0' -s
+```
+
+Script: [metronomo.sh](./metronomo.sh)
 
 ----
 

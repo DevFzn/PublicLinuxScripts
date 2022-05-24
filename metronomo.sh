@@ -29,7 +29,7 @@ Uso(){
         Uso: $Progrm [OPCS]
         
         metro -b 80 -c '1 0 0 0'
-        metro --frecs '680 720'
+        metro --frecs '$WAV1 $WAV0'
 
           -b, --bpm <BPM>               - Golpes por minuto.
           -c, --compas <COMPAS>         - Entre comillas, '1 0 0 1 0', separados por espacios.
