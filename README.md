@@ -317,6 +317,7 @@ Metronomo a: 120 bpm
 |`Termo()` | Lanza xfce terminal y corre el script [caldera.sh](https://gitea.kickto.net/SyDeVoS/Caldera-ino/src/branch/master/scripts#bash)|
 |`yutu()` | Busca video pasado como argumento, instancia [mpv](https://mpv.io/) con el resultado <br> ej. `./otros.sh yutu <video a buscar>`|
 |`Neo()` | 'Envoltorio' para neofetch <br> `./otros.sh Neo -h` lista logos disponibles <br>`./otros.sh Neo <logo>` ejecuta neofetch con el logo especificado.|
+|`ver_imgs()`| Visualizar imagenes en terminal (kitty) del directorio especificado o actual.|
 
 Script [otros.sh](./otros.sh)
 

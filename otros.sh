@@ -40,6 +40,30 @@ yutu(){
     grep -Eo "watch\?v=.{11}" | head -n 1)" &
 }
 
+ver_imgs(){
+    [[ -z "${@}" ]] && dir_imgs="./" || dir_imgs="${@}"
+    [[ ! "${dir_imgs}" =~ /$ ]] && dir_imgs+='/'
+    if [ -d "${dir_imgs}" ] && [ "${TERM}" = "xterm-kitty" ]; then
+        for imagen in $(ls "${dir_imgs}"); do
+            img="${dir_imgs}${imagen}"
+            if [ -f "${img}" ]; then
+                shopt -s nocasematch
+                if [[ "${imagen}" =~ \.(jpe?g|png|svg|webp|gif|ico|bmp|tiff?)$ ]]; then
+                        printf 'Imagen: [%b%s%s%b]\n' "${GRn}" "${dir_imgs}" "${imagen}" "${RST}"
+                        kitty +kitten icat "${img}"
+                        read -p 'continuar'
+                else
+                    printf 'Omitiendo extensión: [%b%s%b]\n' "${REd}" "${img}" "${RST}"
+                fi
+            else
+                printf 'Omitiendo directorio: [%b%s%b]\n' "${REd}" "${img}" "${RST}"
+            fi
+        done
+    else
+        printf '\n%bDestino inexistente o terminal no es kitty%b\n' "${REd}" "${RST}"
+    fi
+}
+
 kaltest() { 
     [[ -n $1  ]] && local pmes=$1 || local pmes=0
     [[ -n $2 ]] && local mesp=$2 || local mesp=$(date '+%Y')
@@ -72,8 +96,8 @@ covStats(){
     # Vista
     printf '\n %bEstadisticas COVID %bChile  🇨🇱️  %b\n' "${GRN}" "${BLU}" "${RST}"
     printf '%b%s%b\n' "${MGT}" " ============================" "${RST}"
-    printf '  %bMuertes totales :%b %s %s %b\n' "${RED}" "${CYA}" "$Mtota" "%" "${RST}"
-    printf '  %bMuertes contagio:%b %s %s %b\n' "${REd}" "${CYa}"  "$Mcont" "%" "${RST}"
+    printf '  %bMuertes totales :%b %s %s %b\n' "${RED}" "${CYA}" "${Mtota}" "%" "${RST}"
+    printf '  %bMuertes contagio:%b %s %s %b\n' "${REd}" "${CYa}" "${Mcont}" "%" "${RST}"
     printf '%b%s%b\n' "${MGT}" " ----------------------------" "${RST}"
     printf '  %bContagios   : %b%s%b\n' "${GRn}" "${CYa}" "${Contag}" "${RST}"
     printf '  %bActivos     : %b%s%b\n' "${GRn}" "${CYa}" "${Activo}" "${RST}"
