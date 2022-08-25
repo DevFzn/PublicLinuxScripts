@@ -44,12 +44,18 @@ ver_imgs(){
     [[ -z "${@}" ]] && dir_imgs="./" || dir_imgs="${@}"
     [[ ! "${dir_imgs}" =~ /$ ]] && dir_imgs+='/'
     if [ -d "${dir_imgs}" ] && [ "${TERM}" = "xterm-kitty" ]; then
-        for imagen in $(ls "${dir_imgs}"); do
-            img="${dir_imgs}${imagen}"
+        ConT=0
+        OIFS="$IFS"
+        IFS=$'\n'
+        while read -a LINEA; do 
+            [[ -r "${dir_imgs}${LINEA}" ]] && imagenes[$ConT]="${dir_imgs}${LINEA}" && ((++ConT))
+        done <<< $(\ls -U "${dir_imgs}") 
+        IFS="$OIFS"
+        for img in "${imagenes[@]}"; do
             if [ -f "${img}" ]; then
                 shopt -s nocasematch
-                if [[ "${imagen}" =~ \.(jpe?g|png|svg|webp|gif|ico|bmp|tiff?)$ ]]; then
-                        printf 'Imagen: [%b%s%s%b]\n' "${GRn}" "${dir_imgs}" "${imagen}" "${RST}"
+                if [[ "${img}" =~ \.(jpe?g|png|svg|webp|gif|ico|bmp|tiff?)$ ]]; then
+                        printf 'Imagen: [%b%s%s%b]\n' "${GRn}" "${dir_imgs}" "${img}" "${RST}"
                         kitty +kitten icat "${img}"
                         read -p 'continuar'
                 else
@@ -221,7 +227,5 @@ metronomo() {
     done
 }
 
-touch_exec(){ 
-    touch "${1}" && chmod u+x ${1} && nvim ${1}; }
 
 "$@"
